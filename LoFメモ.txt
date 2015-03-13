@@ -15,16 +15,56 @@ cameraMng
 　・横の固定を無視（片方のキャラが画面外に出たら、もう片方を引っ張る）
 
 
+
 drawMng
 ・レイヤー、デプス値、画像を登録して、デプス順に画面に描画する
+
 ・画面外のものは描画しないように判断する
 
 ・ピクセル単位で指定した色に変更する（2Pカラー）
+
+
+enum rayerType : nml , ui ,dbg
+(表示優先度1、右のやつほど上に描画する 3種類の構造体リストに振り分ける)
+
+
+drawMngの構造体
+long id 
+(自動で割り当てられる識別番号)
+
+sbyte depth 
+(表示優先度2、一番奥に表示したければ-128,手前はその逆)
+
+string sprite 
+(画像名)
+
+int spriteNumAll
+(spriteの合計数)
+
+int spriteNumDisp
+(表示するsprite)
+
+int angle 
+(直立している状態が0、キャラの正面が+)
+
+int anglePivotX
+int anglePivotY
+(回転の中心点)
+
+
+bool reverseLR
+bool reverseTU
+(左右上下の反転)
+
+
 
 shaderMng
 ・光源位置を設定して、陰影の色を加算する。
 
 ・境界線で判断する？　1つ目の境界線は明るく、2つ目は暗くする
+
+
+
 
 
 ・言語選択
